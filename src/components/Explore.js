@@ -37,7 +37,7 @@ function Explore() {
     return (
         <>
             {marketplaceCtx.mktIsLoading ? <FullScreenLoader heading='loading' /> : null}
-            <PageBanner heading={'Explore our NFTs'} />
+            <PageBanner heading={'Explore1 our NFTs'} />
             <section className='py-5'>
                 {/* FILTER CONTROLS */}
                 <div className='container pt-5'>
