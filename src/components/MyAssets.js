@@ -18,7 +18,7 @@ function MyAssets() {
     const [currentAddress, setCurrentAddress] = useState();
 
     useEffect(() => {
-        document.title = 'Medora | React NFT Marketplace';
+        document.title = 'Astar | React NFT Marketplace';
         setCurrentAddress(web3Ctx.account);
     }, [web3Ctx.account]);
 
@@ -36,14 +36,13 @@ function MyAssets() {
                             <div className='col-lg-6'>
                                 <h2>Your available NFTs</h2>
                                 <p className='text-muted text-sm mb-0'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae esse quis
-                                    sed,necessitatibus nostrum mollitia.
+                                The pain itself is important to the main adipisicing elite. We must reject who it is, but our resilience needs.
                                 </p>
                             </div>
                         </div>
                     </header>
 
-                    <div className='row gy-4'>
+                    <div className='row gy-5'>
                         {collectionCtx.collection
                             .filter((item) => item.owner === currentAddress)
                             .map((NFT, key) => {
@@ -83,8 +82,7 @@ function MyAssets() {
                             <div className='col-lg-6'>
                                 <h2>Placed for sale NFTs</h2>
                                 <p className='text-muted text-sm mb-0'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae esse quis
-                                    sed,necessitatibus nostrum mollitia.
+                                The pain itself is important to the main adipisicing elite. We must reject who it is, but our resilience needs.
                                 </p>
                             </div>
                         </div>
@@ -99,7 +97,7 @@ function MyAssets() {
                         </div>
                     ) : null}
 
-                    <div className='row gy-4'>
+                    <div className='row gy-5'>
                         {collectionCtx.collection
                             .filter((item) => item.owner === marketplaceCtx.contract.options.address)
                             .map((NFT, key) => {

@@ -10,11 +10,12 @@ function HomeBanner() {
             <div className='container py-5 z-index-20 position-relative mt-5'>
                 <div className='row align-items-center mt-5'>
                     <div className='col-lg-5'>
-                        <h1>Create, sell and collect digital items.</h1>
-                        <p className='text-muted'>
-                            Unit of data stored on a digital ledger, called a blockchain, that certifies a digital asset
-                            to be unique and therefore not interchangeable
-                        </p>
+                        <h2>Create, sell and collect digital items.</h2>
+                        <p className='text-muted'>Kongz Of Astar Utilities</p>                        
+                        <p className='text-muted'>Reflection: 5% MINTING FEES</p>                        
+                        <p className='text-muted'>Marketplace: 25% DISTRIBUTED TO HOLDERS</p>                        
+                        <p className='text-muted'>Lottery Tax: 6% Distributed to Holders</p>                        
+                        <p className='text-muted'>TOTAL REWARDS:</p>
                         <ul className='list-inline'>
                             <li className='list-inline-item'>
                                 <Link className='btn btn-gradient-primary' to='/mint'>
@@ -23,28 +24,13 @@ function HomeBanner() {
                             </li>
                             <li className='list-inline-item'>
                                 <Link className='btn btn-light' to='/explore'>
-                                    Explore
+                                    Marketplace
                                 </Link>
                             </li>
                         </ul>
-                        <div className='d-flex align-items-center pt-5'>
-                            <div className='me-4 text-center'>
-                                <p className='h1 mb-0'>942</p>
-                                <span className='text-muted'>Collectibles</span>
-                            </div>
-                            <div className='me-4 text-center'>
-                                <p className='h1 mb-0'>27k</p>
-                                <span className='text-muted'>Auctions</span>
-                            </div>
-                            <div className='me-4 text-center'>
-                                <p className='h1 mb-0'>4k</p>
-                                <span className='text-muted'>NFT</span>
-                            </div>
-                        </div>
                     </div>
-
                     <div className='col-lg-6 ms-auto d-none d-lg-block'>
-                        <img className='img-fluid mx-auto' src=' images/illu-3.png' alt='..' />
+                        <img className='img-fluid mx-auto' src=' images/bg.gif' alt='..' />
                     </div>
                 </div>
             </div>

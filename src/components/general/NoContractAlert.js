@@ -30,9 +30,9 @@ function NoContractAlert({ network }) {
                         <img src='images/metamask.png' alt='MetaMask' width='50' className='mb-4' />
                         <h4 className='fw-light'>Contracts not deployed to detected network.</h4>
                         <p className='fw-light text-muted mb-0'>
-                            Our contracts are deployed to <span className='text-white text-capitalize'>Kovan</span>{' '}
+                            Our contracts are deployed to <span className='text-white text-capitalize'>Binance Smart Chain</span>{' '}
                             network, but The network you're connected to is{' '}
-                            <span className='text-white text-capitalize'>{networkName}</span>. Connect to Kovan network
+                            <span className='text-white text-capitalize'>{networkName}</span>. Connect to Binance Smart Chain network
                             and try again.
                         </p>
                     </div>

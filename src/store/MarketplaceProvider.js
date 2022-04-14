@@ -164,17 +164,17 @@ const MarketplaceProvider = (props) => {
         dispatchMarketplaceAction({ type: 'ADDOFFER', offer: offer });
     };
 
-    const loadUserFundsHandler = async (contract, account) => {
-        const userFunds = await contract.methods.userFunds(account).call();
-        dispatchMarketplaceAction({ type: 'LOADFUNDS', userFunds: userFunds });
-        return userFunds;
-    };
+    // const loadUserFundsHandler = async (contract, account) => {
+    //     const userFunds = await contract.methods.userFunds(account).call();
+    //     dispatchMarketplaceAction({ type: 'LOADFUNDS', userFunds: userFunds });
+    //     return userFunds;
+    // };
 
-    const loadSellersHandler = async (contract) => {
-        const sellers = await contract.methods.getSellers().call();
-        dispatchMarketplaceAction({ type: 'LOADSELLERS', sellers: sellers });
-        return sellers;
-    };
+    // const loadSellersHandler = async (contract) => {
+    //     const sellers = await contract.methods.getSellers().call();
+    //     dispatchMarketplaceAction({ type: 'LOADSELLERS', sellers: sellers });
+    //     return sellers;
+    // };
 
     const setMktIsLoadingHandler = (loading) => {
         dispatchMarketplaceAction({ type: 'LOADING', loading: loading });
@@ -192,8 +192,8 @@ const MarketplaceProvider = (props) => {
         loadOffers: loadOffersHandler,
         updateOffer: updateOfferHandler,
         addOffer: addOfferHandler,
-        loadSellers: loadSellersHandler,
-        loadUserFunds: loadUserFundsHandler,
+        // loadSellers: loadSellersHandler,
+        // loadUserFunds: loadUserFundsHandler,
         setMktIsLoading: setMktIsLoadingHandler,
     };
 

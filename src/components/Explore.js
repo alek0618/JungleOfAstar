@@ -22,7 +22,7 @@ function Explore() {
     const currentItems = collectionCtx.collection.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
-        document.title = 'Explore NFTs | NFT Marketplace';
+        document.title = 'NFT Marketplace';
         if (document.querySelector('.mixitUpContainer')) {
             mixitup('.mixitUpContainer');
         }
@@ -37,28 +37,10 @@ function Explore() {
     return (
         <>
             {marketplaceCtx.mktIsLoading ? <FullScreenLoader heading='loading' /> : null}
-            <PageBanner heading={'Explore our NFTs'} />
+            <PageBanner heading={'Marketplace'} />
             <section className='py-5'>
                 {/* FILTER CONTROLS */}
                 <div className='container pt-5'>
-                    <div className='controls d-flex flex-column flex-md-row mb-4 p-1 bg-dark bd-3 rounded'>
-                        <button className='mixitup-control flex-fill m-1' type='button' data-filter='all'>
-                            All
-                        </button>
-                        {categoryOptions.map((el, i) => {
-                            return (
-                                <button
-                                    key={i}
-                                    className='mixitup-control flex-fill m-1'
-                                    type='button'
-                                    data-filter={`.${el.value}`}
-                                >
-                                    {el.label}
-                                </button>
-                            );
-                        })}
-                    </div>
-
                     {collectionCtx.collection.length !== 0 && collectionCtx.totalSupply !== 0 ? (
                         <div className='row mixitUpContainer gy-4 mb-5 align-items-stretch'>
                             {currentItems.map((NFT, key) => {

@@ -59,6 +59,7 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @media (prefers-reduced-motion: no-preference) {
     :root {
         scroll-behavior: smooth;
@@ -67,7 +68,7 @@
 
 body {
     margin: 0;
-    font-family: var(--bs-font-sans-serif);
+    font-family: 'Press Start 2P', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -275,7 +276,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: var(--bs-font-monospace);
+    font-family: 'Press Start 2P', sans-serif;
     font-size: 1em;
     direction: ltr /* rtl:ignore */;
     unicode-bidi: bidi-override;
@@ -374,7 +375,7 @@ select,
 optgroup,
 textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'Press Start 2P', sans-serif;
     font-size: inherit;
     line-height: inherit;
 }
@@ -6481,7 +6482,7 @@ fieldset:disabled .btn {
     z-index: 1080;
     display: block;
     margin: 0;
-    font-family: var(--bs-font-sans-serif);
+    font-family: 'Press Start 2P', sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -6606,7 +6607,7 @@ fieldset:disabled .btn {
     z-index: 1070;
     display: block;
     max-width: 276px;
-    font-family: var(--bs-font-sans-serif);
+    font-family: 'Press Start 2P', sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -8363,7 +8364,7 @@ fieldset:disabled .btn {
 }
 
 .font-monospace {
-    font-family: var(--bs-font-monospace) !important;
+    font-family: 'Press Start 2P', sans-serif;
 }
 
 .fs-1 {
@@ -11492,7 +11493,7 @@ a {
 .dropdown-toggle::after {
     content: '\f107';
     border: none;
-    font-family: 'Line Awesome Free';
+    font-family: 'Press Start 2P', sans-serif;
     vertical-align: middle;
     font-weight: 900;
     font-size: 0.7rem;
@@ -12942,18 +12943,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
     transform: translateY(-2px);
 }
 
-.contact-icon {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
 .icon-md {
     width: 2rem;
     height: 2rem;
@@ -13294,7 +13283,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
     background: none;
     font-size: 1rem;
     color: #e9ecef;
-    font-family: 'Line Awesome Free';
+    font-family: 'Press Start 2P', sans-serif;
     font-weight: 900;
     /* display: none; */
 }

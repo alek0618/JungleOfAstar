@@ -8,7 +8,7 @@ import CollectionContext from '../../store/collection-context';
 import MarketplaceContext from '../../store/marketplace-context';
 import { motion } from 'framer-motion/dist/es/index';
 import { formatDate } from '../../helpers/utils';
-import NftCategory from './NftCategory';
+// import NftCategory from './NftCategory';
 
 function NftItem({ img, title, owner, price, category, dateCreated, id, index, nftKey }) {
     const web3Ctx = useContext(Web3Context);
@@ -100,7 +100,7 @@ function NftItem({ img, title, owner, price, category, dateCreated, id, index, n
                         <Link className='text-reset' to={`/assets/${id}`}>
                             <img
                                 className='img-fluid rounded w-100'
-                                src={`https://ipfs.infura.io/ipfs/${img}`}
+                                src={`${img}`}
                                 alt={title}
                             />
                         </Link>
@@ -122,7 +122,7 @@ function NftItem({ img, title, owner, price, category, dateCreated, id, index, n
                                 <span className='text-primary ms-2'>{price}</span>
                                 <span className='ms-2'>ETH</span>
                             </p>
-                            <NftCategory category={category} />
+                            {/* <NftCategory category={category} /> */}
                             <button type='button' className='btn btn-primary w-100' value={index} onClick={buyHandler}>
                                 Buy Item
                             </button>
@@ -137,7 +137,7 @@ function NftItem({ img, title, owner, price, category, dateCreated, id, index, n
                                 <span className='text-primary ms-2'>{price}</span>
                                 <span className='ms-2'>ETH</span>
                             </p>
-                            <NftCategory category={category} />
+                            {/* <NftCategory category={category} /> */}
                             <button
                                 type='button'
                                 value={index}
@@ -150,7 +150,7 @@ function NftItem({ img, title, owner, price, category, dateCreated, id, index, n
                     )
                 ) : owner === web3Ctx.account ? (
                     <>
-                        <NftCategory category={category} />
+                        {/* <NftCategory category={category} /> */}
                         <p className='text-muted mb-2'>This is your item, you can put it on sale</p>
                         <form className='input-group' onSubmit={(e) => makeOfferHandler(e, id, nftKey)}>
                             <button type='submit' className='btn btn-primary rounded-sm me-2'>
@@ -168,19 +168,19 @@ function NftItem({ img, title, owner, price, category, dateCreated, id, index, n
                     </>
                 ) : (
                     <>
-                        <NftCategory category={category} />
+                        {/* <NftCategory category={category} /> */}
                         <div className='bg-body p-3 rounded-sm text-muted text-cente mt-3 mb-4'>
                             <span className='text-sm'>Item owner hasn't put an offer yet</span>
                         </div>
                     </>
                 )}
 
-                <div className='my-3 pt-1 bg-body rounded-pill'></div>
+                {/* <div className='my-3 pt-1 bg-body rounded-pill'></div>
                 <p className='text-muted fw-normal mb-0 text-sm d-flex align-items-center'>
                     <i className='la-sm text-primary las la-clock mx-1 mt-1 text-primary'></i>
                     Created
                     <span className='text-primary mx-2'>{formatDate(dateCreated)}</span> ago
-                </p>
+                </p> */}
             </div>
         </motion.div>
     );

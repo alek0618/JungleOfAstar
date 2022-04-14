@@ -29,39 +29,39 @@ function Header() {
         web3Ctx.loadAccount(web3);
     };
 
-    const claimFundsHandler = () => {
-        marketplaceCtx.contract.methods
-            .claimFunds()
-            .send({ from: web3Ctx.account })
-            .on('transactionHash', (hash) => {
-                setFundsLoading(true);
-            })
-            .on('error', (error) => {
-                addToast('Something went wrong when pushing to the blockchain', {
-                    appearance: 'error',
-                });
-                setFundsLoading(false);
-            });
-    };
+    // const claimFundsHandler = () => {
+    //     marketplaceCtx.contract.methods
+    //         .claimFunds()
+    //         .send({ from: web3Ctx.account })
+    //         .on('transactionHash', (hash) => {
+    //             setFundsLoading(true);
+    //         })
+    //         .on('error', (error) => {
+    //             addToast('Something went wrong when pushing to the blockchain', {
+    //                 appearance: 'error',
+    //             });
+    //             setFundsLoading(false);
+    //         });
+    // };
 
-    // Event ClaimFunds subscription
-    if (!marketplaceCtx.mktIsLoading) {
-        marketplaceCtx.contract.events
-            .ClaimFunds()
-            .on('data', (event) => {
-                marketplaceCtx.loadUserFunds(marketplaceCtx.contract, web3Ctx.account);
-                setFundsLoading(false);
-            })
-            .on('error', (error) => {
-                console.log(error);
-                setFundsLoading(true);
-            });
-    }
+    // // Event ClaimFunds subscription
+    // if (!marketplaceCtx.mktIsLoading) {
+    //     marketplaceCtx.contract.events
+    //         .ClaimFunds()
+    //         .on('data', (event) => {
+    //             marketplaceCtx.loadUserFunds(marketplaceCtx.contract, web3Ctx.account);
+    //             setFundsLoading(false);
+    //         })
+    //         .on('error', (error) => {
+    //             console.log(error);
+    //             setFundsLoading(true);
+    //         });
+    // }
 
     useEffect(() => {
-        if (!marketplaceCtx.mktIsLoading) {
-            marketplaceCtx.loadSellers(marketplaceCtx.contract);
-        }
+        // if (!marketplaceCtx.mktIsLoading) {
+        //     marketplaceCtx.loadSellers(marketplaceCtx.contract);
+        // }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [marketplaceCtx.mktIsLoading]);
@@ -70,7 +70,7 @@ function Header() {
         <nav className='navbar navbar-expand-lg navbar-dark fixed-top' id='navbar'>
             <div className='container'>
                 <Link className='navbar-brand' to='/'>
-                    <img className='img-fluid' src='images/logo.svg' alt='Medora' width='140' />
+                    <img className='img-fluid' src='images/kongzlogo.png' alt='Medora' width='140' />
                 </Link>
 
                 <button
@@ -84,6 +84,7 @@ function Header() {
                 >
                     <span className='navbar-toggler-icon'></span>
                 </button>
+                
 
                 <div className='collapse navbar-collapse' id='navbarSupportedContent'>
                     <ul className='navbar-nav ms-auto mb-2 mb-lg-0 flex-lg-row align-items-lg-center'>
@@ -94,29 +95,19 @@ function Header() {
                         </li>
                         <li className='nav-item'>
                             <NavLink className='nav-link' to='/explore'>
-                                Explore
+                                Marketplace
                             </NavLink>
                         </li>
-                        <li className='nav-item'>
+                        {/* <li className='nav-item'>
                             <NavLink className='nav-link' to='/my-assets'>
                                 My Assets
-                            </NavLink>
-                        </li>
-                        <li className='nav-item'>
-                            <NavLink className='nav-link' to='/authors'>
-                                Authors
-                            </NavLink>
-                        </li>
-                        <li className='nav-item'>
-                            <NavLink className='nav-link' to='/contact'>
-                                Contact
                             </NavLink>
                         </li>
                         <li className='nav-item'>
                             <NavLink className='nav-link' to='/mint'>
                                 Mint NFT
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li className='nav-item'>
                             <NavLink className='nav-link' to='/search'>
                                 <i className='las la-search' style={{ marginTop: '0.125rem' }}></i>
@@ -173,7 +164,7 @@ function Header() {
                                             </div>
                                         </NavLink>
                                     </li>
-                                    {marketplaceCtx.userFunds > 0 && !fundsLoading && (
+                                    {/* {marketplaceCtx.userFunds > 0 && !fundsLoading && (
                                         <li className='p-2'>
                                             <button
                                                 type='button'
@@ -183,7 +174,7 @@ function Header() {
                                                 Claim funds
                                             </button>
                                         </li>
-                                    )}
+                                    )} */}
                                     {fundsLoading && (
                                         <li>
                                             <span class='d-flex justify-content-center'>

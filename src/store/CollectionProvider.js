@@ -97,26 +97,26 @@ const CollectionProvider = (props) => {
 
     const loadCollectionHandler = async (contract, totalSupply) => {
         let collection = [];
+        console.log("total: ", totalSupply);
 
-        for (let i = 0; i < totalSupply; i++) {
-            const hash = await contract.methods.tokenURIs(i).call();
+        for (let i = 0; i < 50; i++) {
+            const hash = await contract.methods.tokenURI(i).call();
             try {
-                const response = await fetch(`https://ipfs.infura.io/ipfs/${hash}?clear`);
+                const response = await fetch(`${hash}?clear`);
                 if (!response.ok) {
                     throw new Error('Something went wrong');
                 }
 
                 const metadata = await response.json();
                 const owner = await contract.methods.ownerOf(i + 1).call();
-
                 collection = [
                     {
                         id: i + 1,
-                        title: metadata.properties.name.description,
-                        img: metadata.properties.image.description,
-                        description: metadata.properties.description.description,
-                        category: metadata.properties.category.description,
-                        dateCreated: metadata.properties.dateCreated.description,
+                        title: metadata.name,
+                        img: metadata.image,
+                        description: metadata.description,
+                        // category: metadata.properties.category.description,
+                        // dateCreated: metadata.properties.dateCreated.description,
                         owner: owner,
                     },
                     ...collection,
@@ -132,7 +132,7 @@ const CollectionProvider = (props) => {
         let NFT;
         const hash = await contract.methods.tokenURI(id).call();
         try {
-            const response = await fetch(`https://ipfs.infura.io/ipfs/${hash}?clear`);
+            const response = await fetch(`${hash}?clear`);
             if (!response.ok) {
                 throw new Error('Something went wrong');
             }

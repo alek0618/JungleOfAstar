@@ -27,9 +27,9 @@ function ItemSingle(props) {
             const networkId = await web3Ctx.loadNetworkId(web3);
             const nftDeployedNetwork = NFTCollection.networks[networkId];
             const nftContract = collectionCtx.loadContract(web3, NFTCollection, nftDeployedNetwork);
-            const itemHistory = await nftContract.methods.getTrack(id).call();
-            setAssetHistory(itemHistory);
-            console.log(itemHistory);
+            // const itemHistory = await nftContract.methods.getTrack(id).call();
+            // setAssetHistory(itemHistory);
+            // console.log(itemHistory);
         }
 
         getAssetHistory();
@@ -149,7 +149,7 @@ function ItemSingle(props) {
                                                         to='/explore'
                                                     >
                                                         {' '}
-                                                        <i className='las la-icons la-sm me-1'></i>Explore
+                                                        <i className='las la-icons la-sm me-1'></i>Marketplace
                                                     </Link>
                                                 </li>
                                                 <li className='breadcrumb-item active' aria-current='page'>
@@ -162,13 +162,13 @@ function ItemSingle(props) {
                                 <div className='container py-5'>
                                     <div className='row mb-4 gy-4 mt-4'>
                                         <div className='col-lg-6'>
-                                            <ItemThumbnail thumbnail={`https://ipfs.infura.io/ipfs/${asset.img}`} />
+                                            <ItemThumbnail thumbnail={`${asset.img}`} />
                                         </div>
                                         <div className='col-lg-6'>
                                             <ItemInfoPanel
                                                 name={asset.title}
                                                 category={asset.category}
-                                                img={`https://ipfs.infura.io/ipfs/${asset.img}`}
+                                                img={`${asset.img}`}
                                                 creator={assetHistory[0]}
                                                 description={asset.description}
                                                 dateCreated={asset.dateCreated}

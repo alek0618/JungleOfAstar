@@ -7,6 +7,8 @@ import CollectionContext from './store/collection-context';
 import MarketplaceContext from './store/marketplace-context';
 import NFTCollection from './contracts/NFTCollection.json';
 import NFTMarketplace from './contracts/NFTMarketplace.json';
+import LittleGhostsNFT from './contracts/LittleGhostsNFT.json';
+import GhostMarket from './contracts/GhostMarket.json';
 
 // COMPONENTS
 import Header from './components/general/Header';
@@ -16,10 +18,8 @@ import NotFound from './components/general/NotFound';
 
 // PAGES
 import Home from './components/Home';
-import Contact from './components/Contact';
 import CreateItem from './components/CreateItem';
 import Explore from './components/Explore';
-import Authors from './components/Authors';
 import MyAssets from './components/MyAssets';
 import NoMetaMaskAlert from './components/general/NoMetaMaskAlert';
 import NoContractAlert from './components/general/NoContractAlert';
@@ -30,6 +30,7 @@ import './App.css';
 import Search from './components/Search';
 import ItemSingle from './components/ItemSingle';
 import Category from './components/Category';
+
 
 function App() {
     const [noMetaMask, setNoMetaMask] = useState(false);
@@ -101,11 +102,11 @@ function App() {
             const networkId = await web3Ctx.loadNetworkId(web3);
 
             // Load Contracts
-            const nftDeployedNetwork = NFTCollection.networks[networkId];
-            const nftContract = collectionCtx.loadContract(web3, NFTCollection, nftDeployedNetwork);
+            const nftDeployedNetwork = LittleGhostsNFT.networks[networkId];
+            const nftContract = collectionCtx.loadContract(web3, LittleGhostsNFT, nftDeployedNetwork);
 
-            const mktDeployedNetwork = NFTMarketplace.networks[networkId];
-            const mktContract = marketplaceCtx.loadContract(web3, NFTMarketplace, mktDeployedNetwork);
+            const mktDeployedNetwork = GhostMarket.networks[networkId];
+            const mktContract = marketplaceCtx.loadContract(web3, GhostMarket, mktDeployedNetwork);
 
             console.log("nftContract address: ", nftContract);
             console.log("markteplace address: ", mktContract);
@@ -131,55 +132,55 @@ function App() {
                 setNoContract(true);
             }
 
-            if (mktContract) {
-                // Load offer count
-                const offerCount = await marketplaceCtx.loadOfferCount(mktContract);
+            // if (mktContract) {
+            //     // Load offer count
+            //     const offerCount = await marketplaceCtx.loadOfferCount(mktContract);
 
-                // Load offers
-                marketplaceCtx.loadOffers(mktContract, offerCount);
+            //     // Load offers
+            //     marketplaceCtx.loadOffers(mktContract, offerCount);
 
-                marketplaceCtx.loadSellers(mktContract);
+            //     marketplaceCtx.loadSellers(mktContract);
 
-                // Load User Funds
-                account && marketplaceCtx.loadUserFunds(mktContract, account);
+            //     // Load User Funds
+            //     account && marketplaceCtx.loadUserFunds(mktContract, account);
 
-                // Event OfferFilled subscription
-                mktContract.events
-                    .OfferFilled()
-                    .on('data', (event) => {
-                        marketplaceCtx.updateOffer(event.returnValues.offerId);
-                        collectionCtx.updateOwner(event.returnValues.id, event.returnValues.newOwner);
-                        marketplaceCtx.setMktIsLoading(false);
-                    })
-                    .on('error', (error) => {
-                        console.log(error);
-                    });
+            //     // Event OfferFilled subscription
+            //     mktContract.events
+            //         .OfferFilled()
+            //         .on('data', (event) => {
+            //             marketplaceCtx.updateOffer(event.returnValues.offerId);
+            //             collectionCtx.updateOwner(event.returnValues.id, event.returnValues.newOwner);
+            //             marketplaceCtx.setMktIsLoading(false);
+            //         })
+            //         .on('error', (error) => {
+            //             console.log(error);
+            //         });
 
-                // Event Offer subscription
-                mktContract.events
-                    .Offer()
-                    .on('data', (event) => {
-                        marketplaceCtx.addOffer(event.returnValues);
-                        marketplaceCtx.setMktIsLoading(false);
-                    })
-                    .on('error', (error) => {
-                        console.log(error);
-                    });
+            //     // Event Offer subscription
+            //     mktContract.events
+            //         .Offer()
+            //         .on('data', (event) => {
+            //             marketplaceCtx.addOffer(event.returnValues);
+            //             marketplaceCtx.setMktIsLoading(false);
+            //         })
+            //         .on('error', (error) => {
+            //             console.log(error);
+            //         });
 
-                // Event offerCancelled subscription
-                mktContract.events
-                    .OfferCancelled()
-                    .on('data', (event) => {
-                        marketplaceCtx.updateOffer(event.returnValues.offerId);
-                        collectionCtx.updateOwner(event.returnValues.id, event.returnValues.owner);
-                        marketplaceCtx.setMktIsLoading(false);
-                    })
-                    .on('error', (error) => {
-                        console.log(error);
-                    });
-            } else {
-                setNoContract(true);
-            }
+            //     // Event offerCancelled subscription
+            //     mktContract.events
+            //         .OfferCancelled()
+            //         .on('data', (event) => {
+            //             marketplaceCtx.updateOffer(event.returnValues.offerId);
+            //             collectionCtx.updateOwner(event.returnValues.id, event.returnValues.owner);
+            //             marketplaceCtx.setMktIsLoading(false);
+            //         })
+            //         .on('error', (error) => {
+            //             console.log(error);
+            //         });
+            // } else {
+            //     setNoContract(true);
+            // }
 
             collectionCtx.setNftIsLoading(false);
             marketplaceCtx.setMktIsLoading(false);
@@ -221,9 +222,6 @@ function App() {
                             <Home topSellers={topSellers} />
                             <ScrollTopButton />
                         </Route>
-                        <Route path='/contact'>
-                            <Contact />
-                        </Route>
                         <Route path='/mint'>
                             <CreateItem />
                         </Route>
@@ -241,9 +239,6 @@ function App() {
                         </Route>
                         <Route path='/search'>
                             <Search />
-                        </Route>
-                        <Route path='/authors'>
-                            <Authors sellers={topSellers} />
                         </Route>
                         <Route>
                             <NotFound />
