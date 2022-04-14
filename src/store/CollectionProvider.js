@@ -141,11 +141,11 @@ const CollectionProvider = (props) => {
 
             NFT = {
                 id: parseInt(id),
-                title: metadata.properties.name.description,
-                img: metadata.properties.image.description,
-                description: metadata.properties.description.description,
-                category: metadata.properties.category.description,
-                dateCreated: metadata.properties.dateCreated.description,
+                title: metadata.name,
+                img: metadata.image,
+                description: metadata.description,
+                // category: metadata.properties.category.description,
+                // dateCreated: metadata.properties.dateCreated.description,
                 owner: owner,
             };
         } catch {

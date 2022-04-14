@@ -5,7 +5,6 @@ import MarketplaceContext from '../store/marketplace-context';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import { formatPrice } from '../helpers/utils';
-import { categoryOptions } from '../helpers/constants';
 import 'swiper/swiper-bundle.css';
 
 // COMPONENTS
@@ -16,7 +15,7 @@ import Loader from './general/Loader';
 
 SwiperCore.use([Navigation]);
 
-function Home({ topSellers }) {
+function Home() {
     const collectionCtx = useContext(CollectionContext);
     const marketplaceCtx = useContext(MarketplaceContext);
 

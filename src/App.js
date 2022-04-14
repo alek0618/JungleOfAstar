@@ -39,44 +39,7 @@ function App() {
     const collectionCtx = useContext(CollectionContext);
     const marketplaceCtx = useContext(MarketplaceContext);
     const [networkType, setNetworkType] = useState(null);
-    const [topSellers, setTopSellers] = useState([]);
     const { addToast } = useToasts();
-
-    // let formatedSellers = [];
-
-    useEffect(() => {
-        if (marketplaceCtx.sellers) {
-            const sellersAddress = marketplaceCtx.sellers['0'];
-            const sellersEth = marketplaceCtx.sellers['1'];
-
-            let values = [];
-            for (let i = 0; i < sellersAddress.length; i++) {
-                values.push({
-                    address: sellersAddress[i],
-                    value: parseInt(sellersEth[i]),
-                });
-            }
-            var calcTopSellers = [];
-            values.forEach(function (item) {
-                var existing = calcTopSellers.filter(function (v, i) {
-                    return v.address === item.address;
-                });
-                if (existing.length) {
-                    var existingIndex = calcTopSellers.indexOf(existing[0]);
-                    calcTopSellers[existingIndex].value = calcTopSellers[existingIndex].value.concat(item.value);
-                } else {
-                    if (typeof item.value === 'number') item.value = [item.value];
-                    calcTopSellers.push(item);
-                }
-            });
-
-            setTopSellers(
-                calcTopSellers.map((seller) => {
-                    return { address: seller.address, value: seller.value.reduce((a, b) => a + b, 0) };
-                })
-            );
-        }
-    }, [marketplaceCtx.sellers]);
 
     useEffect(() => {
         // Check if the user has Metamask active
@@ -219,7 +182,7 @@ function App() {
                 <ScrollToTop>
                     <Switch>
                         <Route path='/' exact>
-                            <Home topSellers={topSellers} />
+                            <Home />
                             <ScrollTopButton />
                         </Route>
                         <Route path='/mint'>
